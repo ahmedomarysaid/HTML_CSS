@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<center>
+    <form id="myform">
+        <p style="font-style: oblique; font-family: Georgia, 'Times New Roman', Times, serif;">Simple Form</p>
+<table>
+<tr>
+<td style="font-style: oblique; font-family: Georgia, 'Times New Roman', Times, serif;">
+Username:
+</td>
+<td>
+<input type="text" id="name" placeholder="Username" style="font-style: oblique; font-family: Georgia, 'Times New Roman', Times, serif;">
+</td>
+
+
+</tr>
+
+<tr>
+    <td style="font-style: oblique; font-family: Georgia, 'Times New Roman', Times, serif;">
+        Email:</td>
+    <td>
+        <input type="text" id="email" placeholder="Email" style="font-style: oblique; font-family: Georgia, 'Times New Roman', Times, serif;">
+    </td>
+</tr>
+<tr>
+    <td style="font-style: oblique; font-family: Georgia, 'Times New Roman', Times, serif;">
+        Password:
+    </td>
+    <td>
+        <input type="password" placeholder="Password" style="font-style: oblique; font-family: Georgia, 'Times New Roman', Times, serif;">
+    </td>
+
+</tr>
+
+
+
+
+<tr>
+    <td></td>
+    <td>
+        <input type="button" value="login" style="font-style: oblique; font-family: Georgia, 'Times New Roman', Times, serif;">
+    </td>
+</tr>
+
+
+
+
+</table>
+
+
+
+    </form>
+    </center>
+    <p id="message"></p>
+
+    <script>
+    
+    const form=document.getElementById("myform");
+    const message=document.getElementById("message");
+
+    form.addEventListener("login",function(e)){
+        e.preventDefault();
+    }
+        const name=document.getElementById("name").value.trim();
+        const email=document.getElementById("email").value.trim();
+
+        if(name===""){
+            message.style.color="red";
+            message.innerText
+        }
+    
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
