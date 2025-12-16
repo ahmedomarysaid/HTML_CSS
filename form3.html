@@ -4,10 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .main{
+      border-radius: 15px;
+      border:solid rgb(179, 192, 194) 2px;
+      height: 200px;
+      width: 300px;
+      box-sizing: border-box;   
+
+        }
+
+       input[type="button"]:hover{
+         cursor: pointer;
+       }
+
+       body {
+  height: 100vh;
+  background-image: url("HD Background.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+
+    </style>
 </head>
 <body>
+    <center>
+<div class="main">
 
-<center>
     <form id="myform">
         <p style="font-style: oblique; font-family: Georgia, 'Times New Roman', Times, serif;">Simple Form</p>
 <table>
@@ -34,7 +63,7 @@ Username:
         Password:
     </td>
     <td>
-        <input type="password" placeholder="Password" style="font-style: oblique; font-family: Georgia, 'Times New Roman', Times, serif;">
+        <input type="password" id="pass" placeholder="Password" style="font-style: oblique; font-family: Georgia, 'Times New Roman', Times, serif;">
     </td>
 
 </tr>
@@ -45,7 +74,7 @@ Username:
 <tr>
     <td></td>
     <td>
-        <input type="button" value="login" style="font-style: oblique; font-family: Georgia, 'Times New Roman', Times, serif;">
+        <input type="button" value="submit" style="font-style: oblique; font-family: Georgia, 'Times New Roman', Times, serif;">
     </td>
 </tr>
 
@@ -57,32 +86,48 @@ Username:
 
 
     </form>
+   
+    </div>
     </center>
     <p id="message"></p>
 
     <script>
     
-    const form=document.getElementById("myform");
-    const message=document.getElementById("message");
+    const form = document.getElementById("myForm");
+    const message = document.getElementById("message");
 
-    form.addEventListener("login",function(e)){
-        e.preventDefault();
-    }
-        const name=document.getElementById("name").value.trim();
-        const email=document.getElementById("email").value.trim();
+    form.addEventListener("submit", function(e) {
+      e.preventDefault(); // prevent from page refreshing
 
-        if(name===""){
-            message.style.color="red";
-            message.innerText
-        }
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const pass = document.getElementById("pass").value.trim();
+
+
+      if(name === "") {
+        message.style.color = "red";
+        message.innerText = "Name cannot be empty!";
+          } else if(email === "") {
+        message.style.color = "red";
+        message.innerText = "Email cannot be empty!";
+      } else if(!email.includes("@")) {
+        message.style.color = "red";
+        message.innerText = "Please enter a valid email!";
+      }
+        else if(pass.length<9){
+            message.style.color = "red";
+        message.innerText = "Please enter a valid email!";
+        } 
+
+
+       else {
+        message.style.color = "green";
+        message.innerText = 'Thank you,! Form submitted successfully.';
     
+      }
+    });
+</script>
 
-
-
-
-
-
-
-    </script>
+    
 </body>
 </html>

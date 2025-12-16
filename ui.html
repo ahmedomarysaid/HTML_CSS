@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Counter</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#f1f5f9;
+    }
+
+    .container{
+      background:#ffffff;
+      width:280px;
+      padding:20px;
+      text-align:center;
+      border-radius:12px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    h2{
+      margin-bottom:16px;
+      color:#1f2937;
+    }
+
+    #count{
+      font-size:48px;
+      font-weight:bold;
+      margin-bottom:20px;
+      color:#2563eb;
+    }
+
+    .btns{
+      display:flex;
+      justify-content:space-between;
+    }
+
+    button{
+      border:none;
+      padding:10px 16px;
+      font-size:14px;
+      border-radius:6px;
+      cursor:pointer;
+    }
+
+    .minus{
+      background:#ef4444;
+      color:#fff;
+    }
+
+    .reset{
+      background:#6b7280;
+      color:#fff;
+    }
+
+    .plus{
+      background:#22c55e;
+      color:#fff;
+    }
+
+    button:hover{
+      opacity:0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Counter App</h2>
+    <div id="count">0</div>
+    <div class="btns">
+      <button class="minus">-</button>
+      <button class="reset">Reset</button>
+      <button class="plus">+</button>
+    </div>
+  </div>
+
+  <script>
+    const countEl = document.getElementById("count");
+    const plusBtn = document.querySelector(".plus");
+    const minusBtn = document.querySelector(".minus");
+    const resetBtn = document.querySelector(".reset");
+
+    let count = 0;
+
+    plusBtn.addEventListener("click", () => {
+      count++;
+      countEl.textContent = count;
+    });
+
+    minusBtn.addEventListener("click", () => {
+      count--;
+      countEl.textContent = count;
+    });
+
+    resetBtn.addEventListener("click", () => {
+      count = 0;
+      countEl.textContent = count;
+    });
+  </script>
+
+</body>
+</html>

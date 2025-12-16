@@ -17,3 +17,6 @@ document.getElementById("demo").style.backgroundColor="red";
 
 document.getElementById("demo1").style.color="blue";
  }
+
+ const num=Math.random();
+ console.log(num);

@@ -146,7 +146,8 @@ console.log(dom);
 
 
 
-
+const num=Math.random(5)*100;
+ console.log(num); 
 
 
 

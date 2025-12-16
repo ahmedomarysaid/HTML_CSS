@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>E-Shop Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#ff5a3c;
+      --dark:#111827;
+      --muted:#6b7280;
+      --bg:#f5f5f7;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif}
+
+    body{
+      background:#f3f4f6;
+      color:var(--dark);
+    }
+
+    a{text-decoration:none;color:inherit}
+    ul{list-style:none}
+
+    /* Top nav */
+    .top-nav{
+      background:#fff;
+      border-bottom:1px solid #e5e7eb;
+      padding:10px 60px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .logo{
+      font-weight:700;
+      font-size:22px;
+    }
+    .logo span{color:var(--primary)}
+
+    .search-box{
+      flex:0 0 380px;
+      display:flex;
+      align-items:center;
+      background:#f9fafb;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid #e5e7eb;
+    }
+    .search-box input{
+      border:none;
+      outline:none;
+      background:transparent;
+      flex:1;
+      font-size:13px;
+    }
+
+    .top-right{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      font-size:13px;
+    }
+    .icon-item{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      cursor:pointer;
+    }
+    .icon-item span:first-child{
+      font-size:18px;
+    }
+    .icon-item .price{
+      font-weight:500;
+    }
+
+    /* Main nav (orange bar) */
+    .main-nav{
+      background:var(--primary);
+      color:#fff;
+      padding:10px 60px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-size:14px;
+    }
+
+    .nav-left,
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:24px;
+    }
+
+    .nav-left .all-cat{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-weight:500;
+    }
+    .nav-left .hamburger{
+      font-size:18px;
+    }
+    .nav-right a{
+      opacity:.9;
+    }
+    .nav-right a.active{
+      font-weight:600;
+      opacity:1;
+    }
+
+    /* Hero */
+    .hero{
+      margin:30px auto;
+      max-width:1100px;
+      background:#fff;
+      border-radius:24px;
+      padding:40px 50px;
+      display:flex;
+      gap:40px;
+      align-items:center;
+      box-shadow:0 18px 40px rgba(15,23,42,0.08);
+    }
+
+    .hero-text{
+      flex:1;
+    }
+    .hero-text h1{
+      font-size:34px;
+      line-height:1.2;
+      margin-bottom:16px;
+    }
+    .hero-text p{
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:20px;
+    }
+    .hero-text button{
+      border:none;
+      outline:none;
+      background:var(--primary);
+      color:#fff;
+      padding:12px 26px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:500;
+      cursor:pointer;
+      box-shadow:0 10px 22px rgba(255,90,60,.4);
+      transition:.15s;
+    }
+    .hero-text button:hover{
+      transform:translateY(-1px);
+      box-shadow:0 14px 26px rgba(255,90,60,.45);
+    }
+
+    .hero-img{
+      flex:1;
+      display:flex;
+      justify-content:flex-end;
+    }
+    .hero-img .mock{
+      width:100%;
+      max-width:420px;
+      aspect-ratio:16/9;
+      border-radius:20px;
+      background:url("https://images.pexels.com/photos/3746315/pexels-photo-3746315.jpeg?auto=compress&cs=tinysrgb&w=800") center/cover no-repeat;
+    }
+
+    /* Features row */
+    .features{
+      max-width:1100px;
+      margin:0 auto 30px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+    }
+    .feature{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      font-size:13px;
+    }
+    .feature-icon{
+      font-size:20px;
+      margin-top:2px;
+    }
+    .feature-title{
+      font-weight:500;
+      margin-bottom:2px;
+    }
+    .feature-text{
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    /* Products section */
+    .products-section{
+      max-width:1100px;
+      margin:10px auto 50px;
+    }
+    .section-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      margin-bottom:18px;
+    }
+    .section-header h2{
+      font-size:20px;
+    }
+    .section-header a{
+      font-size:13px;
+      color:var(--primary);
+    }
+
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+    }
+
+    .product-card{
+      background:#fff;
+      border-radius:16px;
+      padding:12px 12px 14px;
+      box-shadow:0 10px 26px rgba(15,23,42,0.05);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      transition:transform .15s, box-shadow .15s;
+    }
+    .product-card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 16px 32px rgba(15,23,42,0.11);
+    }
+    .product-img{
+      width:100%;
+      aspect-ratio:4/3;
+      border-radius:12px;
+      background:#e5e7eb;
+      background-size:cover;
+      background-position:center;
+    }
+    .product-name{
+      font-size:14px;
+      font-weight:500;
+    }
+    .product-meta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:13px;
+    }
+    .price{
+      font-weight:600;
+    }
+    .tag{
+      font-size:11px;
+      padding:2px 8px;
+      border-radius:999px;
+      background:#f3f4f6;
+    }
+    .product-card button{
+      border:none;
+      margin-top:4px;
+      background:var(--primary);
+      color:#fff;
+      border-radius:999px;
+      padding:6px 0;
+      font-size:12px;
+      cursor:pointer;
+    }
+
+    /* Simple responsiveness */
+    @media (max-width:1024px){
+      .top-nav,.main-nav{padding:10px 20px;}
+      .hero{flex-direction:column;padding:30px}
+      .hero-img{justify-content:center}
+      .product-grid{grid-template-columns:repeat(3,1fr);}
+      .features{grid-template-columns:repeat(2,1fr);}
+    }
+
+    @media (max-width:768px){
+      .top-nav{
+        flex-wrap:wrap;
+        gap:10px;
+      }
+      .search-box{flex:1 1 100%;}
+      .main-nav{flex-wrap:wrap;gap:10px;}
+      .product-grid{grid-template-columns:repeat(2,1fr);}
+    }
+
+    @media (max-width:540px){
+      .hero{padding:20px}
+      .hero-text h1{font-size:26px;}
+      .features{grid-template-columns:1fr;}
+      .product-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top navigation -->
+  <header>
+    <div class="top-nav">
+      <div class="logo">e-shop<span>.</span></div>
+
+      <div class="search-box">
+        🔍
+        <input type="text" placeholder="Search products..." />
+      </div>
+
+      <div class="top-right">
+        <div class="icon-item">
+          <span>🛒</span>
+          <div>
+            <div>Cart</div>
+            <div class="price">$150.00</div>
+          </div>
+        </div>
+        <div class="icon-item">
+          <span>👤</span>
+          <div>User<br>Account</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Orange bar nav -->
+    <nav class="main-nav">
+      <div class="nav-left">
+        <div class="all-cat">
+          <span class="hamburger">☰</span>
+          <span>All Categories</span>
+        </div>
+        <a href="#">Products ▾</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="nav-right">
+        <a href="#" class="active">Limited Sale ✌</a>
+        <a href="#">Best Seller</a>
+        <a href="#">New Arrival</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Your One-Stop Electronic Market</h1>
+      <p>Welcome to e-shop, a place where you can buy everything about electronics. Sale every day!</p>
+      <button>Shop Now</button>
+    </div>
+    <div class="hero-img">
+      <div class="mock"></div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="feature">
+      <div class="feature-icon">🎧</div>
+      <div>
+        <div class="feature-title">Responsive</div>
+        <div class="feature-text">Customer service available 24/7</div>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🛡️</div>
+      <div>
+        <div class="feature-title">Secure</div>
+        <div class="feature-text">Certified marketplace since 2017</div>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🚚</div>
+      <div>
+        <div class="feature-title">Shipping</div>
+        <div class="feature-text">Fast & reliable worldwide</div>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔁</div>
+      <div>
+        <div class="feature-title">Transparent</div>
+        <div class="feature-text">Hassle-free return policy</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product cards -->
+  <section class="products-section">
+    <div class="section-header">
+      <h2>Featured Products</h2>
+      <a href="#">View all</a>
+    </div>
+
+    <div class="product-grid">
+      <article class="product-card">
+        <div class="product-img" style="background-image:url('https://images.pexels.com/photos/18104/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800')"></div>
+        <div class="product-name">Wireless Headphones</div>
+        <div class="product-meta">
+          <span class="price">$59.00</span>
+          <span class="tag">Best Seller</span>
+        </div>
+        <button>Add to Cart</button>
+      </article>
+
+      <article class="product-card">
+        <div class="product-img" style="background-image:url('https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800')"></div>
+        <div class="product-name">Smartphone Pro X</div>
+        <div class="product-meta">
+          <span class="price">$799.00</span>
+          <span class="tag">New</span>
+        </div>
+        <button>Add to Cart</button>
+      </article>
+
+      <article class="product-card">
+        <div class="product-img" style="background-image:url('https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
+        <div class="product-name">Mechanical Keyboard</div>
+        <div class="product-meta">
+          <span class="price">$89.00</span>
+          <span class="tag">Hot</span>
+        </div>
+        <button>Add to Cart</button>
+      </article>
+
+      <article class="product-card">
+        <div class="product-img" style="background-image:url('https://images.pexels.com/photos/18106/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800')"></div>
+        <div class="product-name">Ultrabook 14"</div>
+        <div class="product-meta">
+          <span class="price">$1,099.00</span>
+          <span class="tag">Limited</span>
+        </div>
+        <button>Add to Cart</button>
+      </article>
+    </div>
+  </section>
+
+  <script>
+    // (Optional) small JS: focus search input when user presses "/"
+    document.addEventListener("keydown", e => {
+      if (e.key === "/" && document.activeElement.tagName !== "INPUT") {
+        e.preventDefault();
+        document.querySelector(".search-box input").focus();
+      }
+    });
+  </script>
+</body>
+</html>
